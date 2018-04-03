@@ -1,0 +1,19 @@
+all: mygrep
+
+mygrep: main.o lexer.o parser.o checker.o
+	g++ -std=c++11 main.o lexer.o parser.o checker.o -o mygrep
+
+main.o: main.cpp
+	g++ -std=c++11 -c main.cpp
+
+lexer.o: lexer.cpp lexer.h
+	g++ -std=c++11 -c lexer.cpp lexer.h -o lexer.o
+
+parser.o: parser.cpp parser.h
+	g++ -std=c++11 -c parser.cpp parser.h -o parser.o
+
+checker.o: checker.cpp checker.h
+	g++ -std=c++11 -c checker.cpp checker.h -o checker.o
+
+clean:
+	rm -rf *.o mygrep
